@@ -1,6 +1,7 @@
 import os
 import FormLibVariable as fmLib
 import enumList as enumLib
+import threading
 
 
 # ------------------------- Vehiclerlar arası mesafelerin ne kadar olması gerektiği ayarlanıyor
@@ -116,6 +117,22 @@ def allProcessFunction():
     else:
         # TODO::Alarm durumlarında ortaya çıkan yapılacaklar fonksiyonu
         subAllProcessFunctionAlarm(alarm)
+    for i in range(0,500):
+        print("AAA")
 
 def tempFunction():
+    for i in range(0, 500):
+        print("BBBB")
     return 0
+
+
+if __name__ == "__main__":
+    t1 = threading.Thread(target=allProcessFunction)
+    t2 = threading.Thread(target=tempFunction)
+
+    t1.start()
+    t2.start()
+
+    t1.join()
+    t2.join()
+    print("\n\nProje completed....")

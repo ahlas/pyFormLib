@@ -1,10 +1,10 @@
 from VehicleStructs import Coordinates,MovementValues,AvoidAlarmSide,AvoidLengthVehicles,AvoidAlarmDistance
 
 #------------------------Variables For MultiThread
-frontCoord = Coordinates()
-backCoord = Coordinates()
-rightCoord = Coordinates()
-leftCoord = Coordinates()
+frontCoor = Coordinates()
+backCoor = Coordinates()
+rightCoor = Coordinates()
+leftCoor = Coordinates()
 
 #------------------------Camera Coordinates
 
