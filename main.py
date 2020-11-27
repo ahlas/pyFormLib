@@ -107,9 +107,12 @@ def subAllProcessFunctionAlarm(alarm):
     else:
         return 0
 
-def allProcessFunction():
+def allProcessFunction(lock):
     alarm = enumLib.avoidAlarmFormation.Nothing
 
+    lock.acquire()
+    #TODO:: Burada verileri çekme işlemi yaptırcaz
+    lock.release()
     if alarm == enumLib.avoidAlarmFormation.Nothing:
         # TODO::Acildurummevcutdeğilikenyapılacakdavranışlar
         subAllProcessFunctionNothing()
@@ -120,15 +123,23 @@ def allProcessFunction():
     for i in range(0,500):
         print("AAA")
 
-def tempFunction():
+def tempFunction(lock):
+    lock.acquire()
+    #TODO: coordinatları burada alıp guncellemeyi göndericez sürekli
     for i in range(0, 500):
         print("BBBB")
+    lock.release()
     return 0
 
+def analysis(lock):
+    #TODO : alınan verinin analizi burada yapılacak ona bağlı olarak acil işlem de allProcessFunction threadi durdurulup yeniden başlatılarak acil önlem işlemi yaptırılacak
+    return 0
 
 if __name__ == "__main__":
-    t1 = threading.Thread(target=allProcessFunction)
-    t2 = threading.Thread(target=tempFunction)
+    lock = threading.Lock()
+    t1 = threading.Thread(target=allProcessFunction,args=(lock,))
+    t2 = threading.Thread(target=tempFunction,args=(lock,))
+    t3 = threading.Thread(target=analysis,args=(lock,))
 
     t1.start()
     t2.start()
