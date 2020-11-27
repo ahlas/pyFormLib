@@ -100,21 +100,22 @@ def subAllProcessFunctionNothing():
         #Todo: Vehicle sağa doğru yanaşma sergileyecek
         return 0
 
-def subAllProcessFunctionAlarm():
-    return 0
+def subAllProcessFunctionAlarm(alarm):
+    if alarm == enumLib.avoidAlarmFormation.A:
+        return 0
+    else:
+        return 0
 
 def allProcessFunction():
     alarm = enumLib.avoidAlarmFormation.Nothing
 
     if alarm == enumLib.avoidAlarmFormation.Nothing:
         # TODO::Acildurummevcutdeğilikenyapılacakdavranışlar
-        return 0
-
-    elif alarm == enumLib.avoidAlarmFormation.A:
-        return 0
+        subAllProcessFunctionNothing()
 
     else:
-        return 0
+        # TODO::Alarm durumlarında ortaya çıkan yapılacaklar fonksiyonu
+        subAllProcessFunctionAlarm(alarm)
 
 def tempFunction():
     return 0
